@@ -42,6 +42,12 @@ function mnemonic() {
   return "";
 }
 
+const {
+  MAINNET_PRIVATE_KEYS,
+  TESTNET_PRIVATE_KEYS,
+  LOCAL_PRIVATE_KEYS
+} = require('./.secrets.json')
+
 module.exports = {
   defaultNetwork,
 
@@ -55,11 +61,7 @@ module.exports = {
   networks: {
     localhost: {
       url: "http://localhost:8545",
-      /*      
-        notice no mnemonic here? it will just use account 0 of the hardhat node to deploy
-        (you can put in a mnemonic here to set the deployer locally)
-      
-      */
+      accounts: LOCAL_PRIVATE_KEYS,
     },
 
     // rinkeby: {
@@ -93,18 +95,14 @@ module.exports = {
       
        //    url: "https://speedy-nodes-nyc.moralis.io/XXXXXXXXXXXXXXXXXXXXXXX/eth/rinkeby", // <---- YOUR MORALIS ID! (not limited to infura)
       
-      accounts: {
-        mnemonic: mnemonic(),
-      },
+       accounts: TESTNET_PRIVATE_KEYS,
     },
     kovan: {
       url: "https://kovan.infura.io/v3/460f40a260564ac4a4f4b3fffb032dad", // <---- YOUR INFURA ID! (or it won't work)
     
       //    url: "https://speedy-nodes-nyc.moralis.io/XXXXXXXXXXXXXXXXXXXXXXX/eth/kovan", // <---- YOUR MORALIS ID! (not limited to infura)
       
-      accounts: {
-        mnemonic: mnemonic(),
-      },
+      accounts: TESTNET_PRIVATE_KEYS,
     },
     mainnet: {
       url: "https://mainnet.infura.io/v3/460f40a260564ac4a4f4b3fffb032dad", // <---- YOUR INFURA ID! (or it won't work)
@@ -112,18 +110,14 @@ module.exports = {
       //      url: "https://speedy-nodes-nyc.moralis.io/XXXXXXXXXXXXXXXXXXXXXXXXX/eth/mainnet", // <---- YOUR MORALIS ID! (not limited to infura)
         
       gasPrice: mainnetGwei*1000000000,
-      accounts: {
-        mnemonic: mnemonic(),
-      },
+      accounts: MAINNET_PRIVATE_KEYS,
     },
     ropsten: {
       url: "https://ropsten.infura.io/v3/460f40a260564ac4a4f4b3fffb032dad", // <---- YOUR INFURA ID! (or it won't work)
       
       //      url: "https://speedy-nodes-nyc.moralis.io/XXXXXXXXXXXXXXXXXXXXXXXXX/eth/ropsten",// <---- YOUR MORALIS ID! (not limited to infura)
       
-      accounts: {
-        mnemonic: mnemonic(),
-      },
+      accounts: TESTNET_PRIVATE_KEYS,
     },
     goerli: {
       url: "https://goerli.infura.io/v3/460f40a260564ac4a4f4b3fffb032dad", // <---- YOUR INFURA ID! (or it won't work)
