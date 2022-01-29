@@ -533,6 +533,9 @@ function App(props) {
   const [ipfsContent, setIpfsContent] = useState();
 
   const [transferToAddresses, setTransferToAddresses] = useState({});
+  
+  const [addr, setAddr] = useState('');
+  const [amount, setAmount] = useState('');
 
   return (
     <div className="App">
@@ -571,11 +574,18 @@ function App(props) {
                 this <Contract/> component will automatically parse your ABI
                 and give you a form to interact with it locally
             */}
-            <div style={{ width: 640, margin: "auto", marginTop: 32, paddingBottom: 32 }}>
-            <Button
+            
+          
+            
+            
+	    <div style={{ width: 640, marhin: "auto", marginTop: 32, paddingBottom: 32 }}>
+
+	    <input style= {{backgroundColor: 'black'}} onChange={event => setAddr(event.target.value)} />
+      <input style= {{backgroundColor: 'black'}} onChange={event => setAmount(event.target.value)} />
+      <Button
                   onClick={async () => {
                     console.log("MINT NNN Token!");
-                    tx(writeContracts.NNNToken.mint("0xf71f7C916311702d74aCaEee4FDA80E6caeEd943", "111000000000000000000"));
+                    tx(writeContracts.NNNToken.mint(addr, amount)); //11100000000000000000
                   }}
                 >
                   Mint
