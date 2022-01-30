@@ -558,9 +558,14 @@ function App(props) {
           <Menu.Item key="/debugcontracts">
             <Link
               onClick={() => {
-                setRoute("/debugcontracts");
+                if (confirm('Do you want to enter Advanced Contract functionality?')) {
+                  setRoute("/debugcontracts");
+                  window.location.href = '/debugcontracts';
+                } else {
+                  setRoute("/");
+                } 
               }}
-              to="/debugcontracts"
+              
             >
               Debug Contracts
             </Link>
