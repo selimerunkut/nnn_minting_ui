@@ -37,6 +37,7 @@ import { useContractConfig } from "./hooks"
 import Portis from "@portis/web3";
 import Fortmatic from "fortmatic";
 import Authereum from "authereum";
+import Web3 from 'web3';
 
 const { ethers } = require("ethers");
 
@@ -536,6 +537,8 @@ function App(props) {
   
   const [addr, setAddr] = useState('');
   const [amount, setAmount] = useState('');
+  const web3 = new Web3(Web3.givenProvider || "http://localhost:8545");
+  var weiAmount;
 
   return (
     <div className="App">
@@ -582,20 +585,30 @@ function App(props) {
             
           
             
-            
+      <center>
+      <pre>     </pre>
+      <b><label for="addr">Address:  </label></b>
+      <input placeholder="to" id="addr "style= {{color: 'black'}} onChange={event => setAddr(event.target.value)} />
+      <pre>     </pre>
+      <b><label for="amount">Amount:  </label></b>
+      <input placeholder="uint256" id="amount" style= {{color: 'black'}} onChange={event => setAmount(event.target.value)} />
+    
 	    <div style={{ width: 640, marhin: "auto", marginTop: 32, paddingBottom: 32 }}>
 
-	    <input style= {{backgroundColor: 'black'}} onChange={event => setAddr(event.target.value)} />
-      <input style= {{backgroundColor: 'black'}} onChange={event => setAmount(event.target.value)} />
+	   
       <Button
                   onClick={async () => {
                     console.log("MINT NNN Token!");
-                    tx(writeContracts.NNNToken.mint(addr, amount)); //11100000000000000000
+                    weiAmount = web3.utils.toWei(amount, 'ether');
+                    console.log(weiAmount, amount);
+                    tx(writeContracts.NNNToken.mint(addr, weiAmount)); //11100000000000000000
                   }}
                 >
                   Mint
             </Button>
             </div>
+        </center>
+            
           </Route>
 
           <Route path="/debugcontracts">
