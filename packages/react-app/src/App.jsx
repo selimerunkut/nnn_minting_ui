@@ -570,7 +570,7 @@ function App(props) {
               }}
               
             >
-              Debug Contracts
+              Advanced Features
             </Link>
           </Menu.Item>
         </Menu>
