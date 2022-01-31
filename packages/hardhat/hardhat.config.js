@@ -45,7 +45,7 @@ function mnemonic() {
 const {
   MAINNET_PRIVATE_KEYS,
   TESTNET_PRIVATE_KEYS,
-  LOCAL_PRIVATE_KEYS
+  LOCAL_PRIVATE_KEYS,
 } = require('./.secrets.json')
 
 module.exports = {
@@ -93,6 +93,10 @@ module.exports = {
     bsctestnet: {
       url: "https://data-seed-prebsc-1-s1.binance.org:8545",
       accounts: TESTNET_PRIVATE_KEYS,
+    },
+    bscmainnet: {
+      url: "https://bsc-dataseed.binance.org/",
+      accounts: MAINNET_PRIVATE_KEYS,
     },
 
     rinkeby: {

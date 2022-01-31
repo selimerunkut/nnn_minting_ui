@@ -186,10 +186,18 @@ export const NETWORKS = {
   bsctestnet: {
     name: "bsctestnet",
     color: "#efd368",
-    chainId: 4,
+    chainId: 97,
     rpcUrl: `https://data-seed-prebsc-1-s1.binance.org:8545`,
     faucet: "https://testnet.binance.org/faucet-smart",
     blockExplorer: "https://testnet.bscscan.com/",
+  },
+  bscmainnet: {
+    name: "bscMainnet",
+    color: "#evd358",
+    chainId: 56,
+    rpcUrl: `https://bsc-dataseed.binance.org/`,
+    blockExplorer: "https://bscscan.com/",
+    gasPrice: 20000000000,
   },
 };
 
