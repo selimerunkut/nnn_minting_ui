@@ -183,6 +183,14 @@ export const NETWORKS = {
     rpcUrl: `https://api.harmony.one`,
     gasPrice: 1000000000,
   },
+  bsctestnet: {
+    name: "bsctestnet",
+    color: "#efd368",
+    chainId: 4,
+    rpcUrl: `https://data-seed-prebsc-1-s1.binance.org:8545`,
+    faucet: "https://testnet.binance.org/faucet-smart",
+    blockExplorer: "https://testnet.bscscan.com/",
+  },
 };
 
 export const NETWORK = chainId => {
