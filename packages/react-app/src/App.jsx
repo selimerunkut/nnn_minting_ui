@@ -588,10 +588,10 @@ function App(props) {
       <center>
       <pre>     </pre>
       <b><label for="addr">Address:  </label></b>
-      <input placeholder="to" id="addr "style= {{color: 'black'}} onChange={event => setAddr(event.target.value)} />
+      <input placeholder="wallet address" id="addr "style= {{color: 'black'}} onChange={event => setAddr(event.target.value)} />
       <pre>     </pre>
       <b><label for="amount">Amount:  </label></b>
-      <input placeholder="uint256" id="amount" style= {{color: 'black'}} onChange={event => setAmount(event.target.value)} />
+      <input placeholder="NNN token amount" id="amount" style= {{color: 'black'}} onChange={event => setAmount(event.target.value)} />
     
 	    <div style={{ width: 640, marhin: "auto", marginTop: 32, paddingBottom: 32 }}>
 
