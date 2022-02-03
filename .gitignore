@@ -66,3 +66,4 @@ yarn-error.log*
 *.stackdump
 
 .secrets.json
+packages/react-app/build
