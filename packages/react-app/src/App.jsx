@@ -9,7 +9,7 @@ import { BrowserRouter, Link, Route, Switch } from "react-router-dom";
 import Web3Modal from "web3modal";
 import "./App.css";
 import { Account, Address, AddressInput, Contract, Faucet, GasGauge, Header, Ramp, ThemeSwitch } from "./components";
-import {INFURA_ID, NETWORK, NETWORKS } from "./constants";
+import { INFURA_ID, NETWORK, NETWORKS } from "./constants";
 import { Transactor } from "./helpers";
 import {
   useBalance,
@@ -19,12 +19,8 @@ import {
   useOnBlock,
   useUserProviderAndSigner,
 } from "eth-hooks";
-import {
-  useEventListener,
-} from "eth-hooks/events/useEventListener";
-import {
-  useExchangeEthPrice,
-} from "eth-hooks/dapps/dex";
+import { useEventListener } from "eth-hooks/events/useEventListener";
+import { useExchangeEthPrice } from "eth-hooks/dapps/dex";
 // import Hints from "./Hints";
 
 const { BufferList } = require("bl");
@@ -32,12 +28,11 @@ const { BufferList } = require("bl");
 const ipfsAPI = require("ipfs-http-client");
 const ipfs = ipfsAPI({ host: "ipfs.infura.io", port: "5001", protocol: "https" });
 
-
-import { useContractConfig } from "./hooks"
+import { useContractConfig } from "./hooks";
 import Portis from "@portis/web3";
 import Fortmatic from "fortmatic";
 import Authereum from "authereum";
-import Web3 from 'web3';
+import Web3 from "web3";
 
 const { ethers } = require("ethers");
 
@@ -61,7 +56,7 @@ const { ethers } = require("ethers");
 */
 
 /// 📡 What chain are your contracts deployed to?
-const targetNetwork = NETWORKS.bsctestnet; // <------- select your target frontend network (localhost, rinkeby, xdai, mainnet)
+const targetNetwork = NETWORKS.bscmainnet; // <------- select your target frontend network (localhost, rinkeby, xdai, mainnet)
 
 // 😬 Sorry for all the console logging
 const DEBUG = true;
@@ -110,7 +105,11 @@ if (DEBUG) console.log("📡 Connecting to Mainnet Ethereum");
 const scaffoldEthProvider = navigator.onLine
   ? new ethers.providers.StaticJsonRpcProvider("https://rpc.scaffoldeth.io:48544")
   : null;
-const poktMainnetProvider = navigator.onLine ? new ethers.providers.StaticJsonRpcProvider("https://eth-mainnet.gateway.pokt.network/v1/lb/611156b4a585a20035148406") : null;
+const poktMainnetProvider = navigator.onLine
+  ? new ethers.providers.StaticJsonRpcProvider(
+      "https://eth-mainnet.gateway.pokt.network/v1/lb/611156b4a585a20035148406",
+    )
+  : null;
 const mainnetInfura = navigator.onLine
   ? new ethers.providers.StaticJsonRpcProvider("https://mainnet.infura.io/v3/" + INFURA_ID)
   : null;
@@ -154,7 +153,6 @@ const web3Modal = new Web3Modal({
           100: "https://dai.poa.network", // xDai
         },
       },
-
     },
     portis: {
       display: {
@@ -461,8 +459,6 @@ function App(props) {
     );
   }
 
-
-
   const loadWeb3Modal = useCallback(async () => {
     const provider = await web3Modal.connect();
     setInjectedProvider(new ethers.providers.Web3Provider(provider));
@@ -534,9 +530,9 @@ function App(props) {
   const [ipfsContent, setIpfsContent] = useState();
 
   const [transferToAddresses, setTransferToAddresses] = useState({});
-  
-  const [addr, setAddr] = useState('');
-  const [amount, setAmount] = useState('');
+
+  const [addr, setAddr] = useState("");
+  const [amount, setAmount] = useState("");
   const web3 = new Web3(Web3.givenProvider || "http://localhost:8545");
   var weiAmount;
 
@@ -561,14 +557,15 @@ function App(props) {
           <Menu.Item key="/debugcontracts">
             <Link
               onClick={() => {
-                if (confirm('Do you want to enter Advanced Contract functionality?')) {
+                /*                 if (confirm('Do you want to enter Advanced Contract functionality?')) {
                   setRoute("/debugcontracts");
-                  window.location.href = '/debugcontracts';
+                  //window.location.href = '/debugcontracts';
                 } else {
                   setRoute("/");
-                } 
+                } */
+                setRoute("/debugcontracts");
               }}
-              
+              to="/debugcontracts"
             >
               Advanced Features
             </Link>
@@ -582,33 +579,42 @@ function App(props) {
                 this <Contract/> component will automatically parse your ABI
                 and give you a form to interact with it locally
             */}
-            
-          
-            
-      <center>
-      <pre>     </pre>
-      <b><label for="addr">Address:  </label></b>
-      <input placeholder="wallet address" id="addr "style= {{color: 'black'}} onChange={event => setAddr(event.target.value)} />
-      <pre>     </pre>
-      <b><label for="amount">Amount:  </label></b>
-      <input placeholder="NNN token amount" id="amount" style= {{color: 'black'}} onChange={event => setAmount(event.target.value)} />
-    
-	    <div style={{ width: 640, marhin: "auto", marginTop: 32, paddingBottom: 32 }}>
 
-	   
-      <Button
+            <center>
+              <pre> </pre>
+              <b>
+                <label for="addr">Address: </label>
+              </b>
+              <input
+                placeholder="wallet address"
+                id="addr "
+                style={{ color: "black" }}
+                onChange={event => setAddr(event.target.value)}
+              />
+              <pre> </pre>
+              <b>
+                <label for="amount">Amount: </label>
+              </b>
+              <input
+                placeholder="NNN token amount"
+                id="amount"
+                style={{ color: "black" }}
+                onChange={event => setAmount(event.target.value)}
+              />
+
+              <div style={{ width: 640, marhin: "auto", marginTop: 32, paddingBottom: 32 }}>
+                <Button
                   onClick={async () => {
                     console.log("MINT NNN Token!");
-                    weiAmount = web3.utils.toWei(amount, 'ether');
+                    weiAmount = web3.utils.toWei(amount, "ether");
                     console.log(weiAmount, amount);
                     tx(writeContracts.NNNToken.mint(addr, weiAmount)); //11100000000000000000
                   }}
                 >
                   Mint
-            </Button>
-            </div>
-        </center>
-            
+                </Button>
+              </div>
+            </center>
           </Route>
 
           <Route path="/debugcontracts">
@@ -651,7 +657,6 @@ function App(props) {
         />
         {faucetHint}
       </div>
-
     </div>
   );
 }

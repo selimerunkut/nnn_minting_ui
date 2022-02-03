@@ -1,11 +1,11 @@
 {
-  "97": {
-    "bsctestnet": {
-      "name": "bsctestnet",
-      "chainId": "97",
+  "56": {
+    "bscmainnet": {
+      "name": "bscmainnet",
+      "chainId": "56",
       "contracts": {
         "DefaultProxyAdmin": {
-          "address": "0x178cB5634180a32Ff79EBF983f864cC6E01527c4",
+          "address": "0x7aab82Eb8fB14aC34EAfafE76A27cE7e1614D193",
           "abi": [
             {
               "inputs": [
@@ -170,7 +170,7 @@
           ]
         },
         "NNNToken": {
-          "address": "0x07339fd7139498F8271650C7EaB08f8250977912",
+          "address": "0xB4E44dCAa4828a188955DAff5D8261a5E4876e26",
           "abi": [
             {
               "anonymous": false,
@@ -1108,7 +1108,7 @@
           ]
         },
         "NNNToken_Implementation": {
-          "address": "0xdB6631579B68a04F4c666b4A5b8035016693fdCF",
+          "address": "0x4Cdbd3D80036A05a3162D492287a0960dcE4A385",
           "abi": [
             {
               "anonymous": false,
@@ -1915,7 +1915,7 @@
           ]
         },
         "NNNToken_Proxy": {
-          "address": "0x07339fd7139498F8271650C7EaB08f8250977912",
+          "address": "0xB4E44dCAa4828a188955DAff5D8261a5E4876e26",
           "abi": [
             {
               "inputs": [
