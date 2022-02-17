@@ -5,7 +5,7 @@
       "chainId": "56",
       "contracts": {
         "DefaultProxyAdmin": {
-          "address": "0x7aab82Eb8fB14aC34EAfafE76A27cE7e1614D193",
+          "address": "0x986d21E1E09924dAeD49dc58A783713702250729",
           "abi": [
             {
               "inputs": [
@@ -170,7 +170,7 @@
           ]
         },
         "NNNToken": {
-          "address": "0xB4E44dCAa4828a188955DAff5D8261a5E4876e26",
+          "address": "0x4EBC40FE90a06AbC33B5edA9a267392bD98E386d",
           "abi": [
             {
               "anonymous": false,
@@ -1108,7 +1108,7 @@
           ]
         },
         "NNNToken_Implementation": {
-          "address": "0x4Cdbd3D80036A05a3162D492287a0960dcE4A385",
+          "address": "0x6933Cd1EE3a59CFa290c5a2D33E9bd159Bd2bdfF",
           "abi": [
             {
               "anonymous": false,
@@ -1915,7 +1915,7 @@
           ]
         },
         "NNNToken_Proxy": {
-          "address": "0xB4E44dCAa4828a188955DAff5D8261a5E4876e26",
+          "address": "0x4EBC40FE90a06AbC33B5edA9a267392bD98E386d",
           "abi": [
             {
               "inputs": [
